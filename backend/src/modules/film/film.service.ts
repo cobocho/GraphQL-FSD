@@ -3,7 +3,7 @@ import ghibliData from 'src/data/ghibli';
 
 @Injectable()
 export class FilmService {
-  getFilms() {
-    return ghibliData.films;
-  }
+	getFilms() {
+		return ghibliData.films;
+	}
 }

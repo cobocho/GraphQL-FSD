@@ -1,0 +1,14 @@
+import { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+	schema: 'http://localhost:3000/graphql',
+	documents: ['src/**/*.ts', '!src/shared/lib/gql/**/*'],
+	generates: {
+		'./src/shared/lib/gql/': {
+			preset: 'client',
+			plugins: [],
+		},
+	},
+};
+
+export default config;
