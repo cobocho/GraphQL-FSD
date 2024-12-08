@@ -7,6 +7,7 @@ const config: CodegenConfig = {
 		'./src/shared/lib/gql/': {
 			preset: 'client',
 			plugins: [],
+			overwrite: true,
 		},
 	},
 };

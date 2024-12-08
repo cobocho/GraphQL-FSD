@@ -50,4 +50,5 @@ type Director {
 
 type Query {
   films(cursor: Int = 1, limit: Int = 6): PaginatedFilms!
+  film(id: Int!): Film!
 }

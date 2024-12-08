@@ -35,4 +35,8 @@ export class FilmService {
 			cursor: hasNext ? nextCursor + 1 : null,
 		};
 	}
+
+	getFilmById(id: number) {
+		return ghibliData.films.find((film) => film.id === id);
+	}
 }

@@ -28,6 +28,11 @@ export class FilmResolver {
 		return this.filmService.getFilms(limit, cursor);
 	}
 
+	@Query(() => Film)
+	film(@Args('id', { type: () => Int }) id: number) {
+		return this.filmService.getFilmById(id);
+	}
+
 	@ResolveField(() => Director)
 	director(@Root() film: Film) {
 		return this.directorService.getDirector(film.director_id);

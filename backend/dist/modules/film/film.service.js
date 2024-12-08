@@ -31,6 +31,9 @@ let FilmService = class FilmService {
             cursor: hasNext ? nextCursor + 1 : null,
         };
     }
+    getFilmById(id) {
+        return ghibli_1.default.films.find((film) => film.id === id);
+    }
 };
 exports.FilmService = FilmService;
 exports.FilmService = FilmService = __decorate([

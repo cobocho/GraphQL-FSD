@@ -21,3 +21,26 @@ export const GetFilms = graphql(`
 		}
 	}
 `);
+
+export const GetFilmById = graphql(`
+	query GetFilmById($id: Int!) {
+		film(id: $id) {
+			id
+			title
+			subtitle
+			runningTime
+			id
+			title
+			subtitle
+			runningTime
+			release
+			description
+			posterImg
+			genre
+			director {
+				id
+				name
+			}
+		}
+	}
+`);

@@ -26,6 +26,9 @@ let FilmResolver = class FilmResolver {
     films(cursor, limit) {
         return this.filmService.getFilms(limit, cursor);
     }
+    film(id) {
+        return this.filmService.getFilmById(id);
+    }
     director(film) {
         return this.directorService.getDirector(film.director_id);
     }
@@ -39,6 +42,13 @@ __decorate([
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", void 0)
 ], FilmResolver.prototype, "films", null);
+__decorate([
+    (0, graphql_1.Query)(() => film_entity_1.Film),
+    __param(0, (0, graphql_1.Args)('id', { type: () => graphql_1.Int })),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], FilmResolver.prototype, "film", null);
 __decorate([
     (0, graphql_1.ResolveField)(() => director_entity_1.Director),
     __param(0, (0, graphql_1.Root)()),

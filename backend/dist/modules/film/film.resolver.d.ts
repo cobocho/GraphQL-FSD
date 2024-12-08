@@ -12,5 +12,6 @@ export declare class FilmResolver {
         films: Film[];
         cursor: number;
     };
+    film(id: number): Film;
     director(film: Film): import("../../data/ghibli").Director;
 }
