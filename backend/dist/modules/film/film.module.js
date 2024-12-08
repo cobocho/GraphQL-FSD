@@ -10,12 +10,13 @@ exports.FilmModule = void 0;
 const common_1 = require("@nestjs/common");
 const film_service_1 = require("./film.service");
 const film_resolver_1 = require("./film.resolver");
+const director_service_1 = require("../director/director.service");
 let FilmModule = class FilmModule {
 };
 exports.FilmModule = FilmModule;
 exports.FilmModule = FilmModule = __decorate([
     (0, common_1.Module)({
-        providers: [film_resolver_1.FilmResolver, film_service_1.FilmService],
+        providers: [film_resolver_1.FilmResolver, film_service_1.FilmService, director_service_1.DirectorService],
     })
 ], FilmModule);
 //# sourceMappingURL=film.module.js.map

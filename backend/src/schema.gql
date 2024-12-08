@@ -29,8 +29,25 @@ type Film {
 
   """영화 개봉일"""
   release: String!
+  director: Director!
+}
+
+type PaginatedFilms {
+  """영화 목록"""
+  films: [Film!]!
+
+  """다음 커서"""
+  cursor: Int
+}
+
+type Director {
+  """감독 고유 ID"""
+  id: Int!
+
+  """감독 이름"""
+  name: String!
 }
 
 type Query {
-  films: [Film!]!
+  films(cursor: Int = 1, limit: Int = 6): PaginatedFilms!
 }

@@ -10,8 +10,26 @@ exports.FilmService = void 0;
 const common_1 = require("@nestjs/common");
 const ghibli_1 = require("../../data/ghibli");
 let FilmService = class FilmService {
-    getFilms() {
-        return ghibli_1.default.films;
+    getFilms(limit, cursor) {
+        const realLimit = Math.min(limit, 6);
+        if (!cursor) {
+            return {
+                films: [],
+            };
+        }
+        const cursorDataIndex = ghibli_1.default.films.findIndex((film) => film.id === cursor);
+        if (cursorDataIndex === -1) {
+            return {
+                films: [],
+            };
+        }
+        const result = ghibli_1.default.films.slice(cursorDataIndex, cursorDataIndex + realLimit);
+        const nextCursor = result[result.length - 1]?.id;
+        const hasNext = nextCursor < ghibli_1.default.films.length;
+        return {
+            films: result,
+            cursor: hasNext ? nextCursor + 1 : null,
+        };
     }
 };
 exports.FilmService = FilmService;

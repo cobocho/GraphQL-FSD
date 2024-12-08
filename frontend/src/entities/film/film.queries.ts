@@ -1,9 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
-import { gqlClient } from '@shared/lib/gql';
+import { queryOptions } from '@tanstack/react-query';
+import { filmService } from '@shared/api/film';
 
-export const useGetFilmsQuery = () => {
-	const { data } = useQuery({
-		queryKey: ['films'],
-		queryFn: () => gqlClient.request(Fils),
-	});
-};
+export class FilmQueries {
+	private static keys = {
+		films: ['films'] as const,
+	};
+
+	public static getFilms(cursor: number, limit: number) {
+		return queryOptions({
+			queryKey: this.keys.films,
+			queryFn: () => filmService.getFilms(cursor, limit),
+		});
+	}
+}

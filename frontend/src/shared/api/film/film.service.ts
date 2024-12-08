@@ -1,6 +1,7 @@
 import { gqlClient } from '@shared/lib/react-query';
-import { GetAllFilms } from './film.gql';
+import { GetFilms } from './film.gql';
 
 export const filmService = {
-	getAllFilms: () => gqlClient.request(GetAllFilms),
+	getFilms: (cursor: number, limit: number) =>
+		gqlClient.request(GetFilms, { cursor, limit }),
 };

@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { FilmPage } from '@pages/film';
 
 const router = createBrowserRouter([
 	{
 		children: [
 			{
 				path: '/',
-				element: <div>Home</div>,
+				element: <FilmPage />,
 			},
 		],
 	},

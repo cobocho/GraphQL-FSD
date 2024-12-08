@@ -9,3 +9,7 @@ export declare class Film {
     posterImg: string;
     release: string;
 }
+export declare class PaginatedFilms {
+    films: Film[];
+    cursor: number;
+}

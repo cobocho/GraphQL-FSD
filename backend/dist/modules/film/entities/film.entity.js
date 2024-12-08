@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Film = void 0;
+exports.PaginatedFilms = exports.Film = void 0;
 const graphql_1 = require("@nestjs/graphql");
 let Film = class Film {
 };
@@ -53,4 +53,18 @@ __decorate([
 exports.Film = Film = __decorate([
     (0, graphql_1.ObjectType)()
 ], Film);
+let PaginatedFilms = class PaginatedFilms {
+};
+exports.PaginatedFilms = PaginatedFilms;
+__decorate([
+    (0, graphql_1.Field)(() => [Film], { description: '영화 목록' }),
+    __metadata("design:type", Array)
+], PaginatedFilms.prototype, "films", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_1.Int, { description: '다음 커서', nullable: true }),
+    __metadata("design:type", Number)
+], PaginatedFilms.prototype, "cursor", void 0);
+exports.PaginatedFilms = PaginatedFilms = __decorate([
+    (0, graphql_1.ObjectType)()
+], PaginatedFilms);
 //# sourceMappingURL=film.entity.js.map
