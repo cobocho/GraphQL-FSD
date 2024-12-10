@@ -6,18 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FilmModule = void 0;
+exports.CutService = void 0;
 const common_1 = require("@nestjs/common");
-const film_service_1 = require("./film.service");
-const film_resolver_1 = require("./film.resolver");
-const director_service_1 = require("../director/director.service");
-let FilmModule = class FilmModule {
+const ghibli_1 = require("../data/ghibli");
+let CutService = class CutService {
+    getCutByFilmId(filmId) {
+        return ghibli_1.default.cuts.filter((cut) => cut.filmId === filmId);
+    }
 };
-exports.FilmModule = FilmModule;
-exports.FilmModule = FilmModule = __decorate([
-    (0, common_1.Module)({
-        providers: [film_resolver_1.FilmResolver, film_service_1.FilmService, director_service_1.DirectorService],
-        exports: [film_service_1.FilmService],
-    })
-], FilmModule);
-//# sourceMappingURL=film.module.js.map
+exports.CutService = CutService;
+exports.CutService = CutService = __decorate([
+    (0, common_1.Injectable)()
+], CutService);
+//# sourceMappingURL=cut.service.js.map

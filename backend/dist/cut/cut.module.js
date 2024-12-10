@@ -6,18 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FilmModule = void 0;
+exports.CutModule = void 0;
 const common_1 = require("@nestjs/common");
-const film_service_1 = require("./film.service");
-const film_resolver_1 = require("./film.resolver");
-const director_service_1 = require("../director/director.service");
-let FilmModule = class FilmModule {
+const cut_service_1 = require("./cut.service");
+const cut_resolver_1 = require("./cut.resolver");
+const film_service_1 = require("../modules/film/film.service");
+let CutModule = class CutModule {
 };
-exports.FilmModule = FilmModule;
-exports.FilmModule = FilmModule = __decorate([
+exports.CutModule = CutModule;
+exports.CutModule = CutModule = __decorate([
     (0, common_1.Module)({
-        providers: [film_resolver_1.FilmResolver, film_service_1.FilmService, director_service_1.DirectorService],
-        exports: [film_service_1.FilmService],
+        providers: [cut_service_1.CutService, cut_resolver_1.CutResolver, film_service_1.FilmService],
     })
-], FilmModule);
-//# sourceMappingURL=film.module.js.map
+], CutModule);
+//# sourceMappingURL=cut.module.js.map

@@ -14,6 +14,17 @@ export type Scalars = {
   Float: number;
 };
 
+export type Cut = {
+  __typename?: 'Cut';
+  film: Film;
+  /** 명장면 영화 ID */
+  filmId: Scalars['Int'];
+  /** 명장면 고유 ID */
+  id: Scalars['Int'];
+  /** 명장면 이미지 URL */
+  src: Scalars['String'];
+};
+
 export type Director = {
   __typename?: 'Director';
   /** 감독 고유 ID */
@@ -55,8 +66,14 @@ export type PaginatedFilms = {
 
 export type Query = {
   __typename?: 'Query';
+  cuts: Array<Cut>;
   film: Film;
   films: PaginatedFilms;
+};
+
+
+export type QueryCutsArgs = {
+  filmId: Scalars['Int'];
 };
 
 
@@ -69,6 +86,13 @@ export type QueryFilmsArgs = {
   cursor?: InputMaybe<Scalars['Int']>;
   limit?: InputMaybe<Scalars['Int']>;
 };
+
+export type CutsQueryVariables = Exact<{
+  filmId: Scalars['Int'];
+}>;
+
+
+export type CutsQuery = { __typename?: 'Query', cuts: Array<{ __typename?: 'Cut', id: number, src: string, film: { __typename?: 'Film', title: string } }> };
 
 export type GetFilmsQueryVariables = Exact<{
   cursor?: InputMaybe<Scalars['Int']>;
@@ -86,5 +110,6 @@ export type GetFilmByIdQueryVariables = Exact<{
 export type GetFilmByIdQuery = { __typename?: 'Query', film: { __typename?: 'Film', id: number, title: string, subtitle?: string | null, runningTime: number, release: string, description: string, posterImg: string, genre: string, director: { __typename?: 'Director', id: number, name: string } } };
 
 
+export const CutsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"cuts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filmId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cuts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filmId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filmId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"src"}},{"kind":"Field","name":{"kind":"Name","value":"film"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]} as unknown as DocumentNode<CutsQuery, CutsQueryVariables>;
 export const GetFilmsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetFilms"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"cursor"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"films"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"cursor"},"value":{"kind":"Variable","name":{"kind":"Name","value":"cursor"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cursor"}},{"kind":"Field","name":{"kind":"Name","value":"films"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"runningTime"}},{"kind":"Field","name":{"kind":"Name","value":"release"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"posterImg"}},{"kind":"Field","name":{"kind":"Name","value":"genre"}},{"kind":"Field","name":{"kind":"Name","value":"director"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetFilmsQuery, GetFilmsQueryVariables>;
 export const GetFilmByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetFilmById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"film"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"runningTime"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"runningTime"}},{"kind":"Field","name":{"kind":"Name","value":"release"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"posterImg"}},{"kind":"Field","name":{"kind":"Name","value":"genre"}},{"kind":"Field","name":{"kind":"Name","value":"director"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<GetFilmByIdQuery, GetFilmByIdQueryVariables>;

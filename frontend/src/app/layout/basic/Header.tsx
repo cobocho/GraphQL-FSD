@@ -3,7 +3,7 @@ import { Button } from '@shared/ui/button';
 
 export const Header = () => {
 	return (
-		<header className="flex fixed top-0 left-0 items-center w-full bg-white px-10 py-4 justify-between border-b-[1px] border-b-gray-200 border-solid">
+		<header className="flex fixed top-0 left-0 items-center w-full bg-white px-10 py-4 justify-between border-b-[1px] border-b-gray-200 border-solid z-[49]">
 			<Link to="/">
 				<p className="font-bold">GhibliBestCut</p>
 			</Link>

@@ -1,17 +1,23 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import { CutQueries } from '@entities/cut';
 import { FilmQueries } from '@entities/film';
+import { AspectRatio } from '@shared/ui/aspect-ratio';
+import { CutDialog } from './cut-dialog';
 
 export const FilmDetailPage = () => {
 	const { id } = useParams();
 
-	const { data } = useSuspenseQuery(FilmQueries.getFilmById(Number(id)));
+	const filmQuery = useSuspenseQuery(FilmQueries.getFilmById(Number(id)));
+	const cutsQuery = useSuspenseQuery(CutQueries.getCutsByFilmId(Number(id)));
 
-	const film = data.film;
+	const film = filmQuery.data.film;
 	const year = new Date(film.release).getFullYear();
 
+	const cuts = cutsQuery.data.cuts;
+
 	return (
-		<div>
+		<div className="flex gap-10 flex-col">
 			<div className="flex gap-8 items-center">
 				<div className="h-[400px] w-[280px]">
 					<img
@@ -44,6 +50,26 @@ export const FilmDetailPage = () => {
 						<p className="text-sm">{film.description}</p>
 					</div>
 				</div>
+			</div>
+			<div className="grid grid-cols-3 gap-6">
+				{cuts.map((c) => (
+					<CutDialog
+						cut={c}
+						key={c.id}
+					>
+						<AspectRatio
+							ratio={1.7 / 1}
+							className=" bg-gray-200 rounded-xl overflow-hidden cursor-pointer"
+						>
+							<img
+								src={c.src}
+								alt={c.id.toString()}
+								className="w-full h-full object-cover"
+								loading="lazy"
+							/>
+						</AspectRatio>
+					</CutDialog>
+				))}
 			</div>
 		</div>
 	);

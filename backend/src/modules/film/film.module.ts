@@ -5,5 +5,6 @@ import { DirectorService } from '../director/director.service';
 
 @Module({
 	providers: [FilmResolver, FilmService, DirectorService],
+	exports: [FilmService],
 })
 export class FilmModule {}

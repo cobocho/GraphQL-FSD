@@ -48,7 +48,20 @@ type Director {
   name: String!
 }
 
+type Cut {
+  """명장면 고유 ID"""
+  id: Int!
+
+  """명장면 이미지 URL"""
+  src: String!
+
+  """명장면 영화 ID"""
+  filmId: Int!
+  film: Film!
+}
+
 type Query {
   films(cursor: Int = 1, limit: Int = 6): PaginatedFilms!
   film(id: Int!): Film!
+  cuts(filmId: Int!): [Cut!]!
 }
