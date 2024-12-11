@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CutResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const cut_service_1 = require("./cut.service");
-const cut_entity_1 = require("./entities/cut.entity");
-const film_entity_1 = require("../modules/film/entities/film.entity");
 const film_service_1 = require("../modules/film/film.service");
+const cut_model_1 = require("../@generated/cut/cut.model");
+const film_model_1 = require("../@generated/film/film.model");
 let CutResolver = class CutResolver {
     constructor(cutService, filmService) {
         this.cutService = cutService;
@@ -32,21 +32,21 @@ let CutResolver = class CutResolver {
 };
 exports.CutResolver = CutResolver;
 __decorate([
-    (0, graphql_1.Query)(() => [cut_entity_1.Cut]),
+    (0, graphql_1.Query)(() => [cut_model_1.Cut]),
     __param(0, (0, graphql_1.Args)('filmId', { type: () => graphql_1.Int })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], CutResolver.prototype, "cuts", null);
 __decorate([
-    (0, graphql_1.ResolveField)(() => film_entity_1.Film),
+    (0, graphql_1.ResolveField)(() => film_model_1.Film),
     __param(0, (0, graphql_1.Root)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [cut_entity_1.Cut]),
+    __metadata("design:paramtypes", [cut_model_1.Cut]),
     __metadata("design:returntype", void 0)
 ], CutResolver.prototype, "film", null);
 exports.CutResolver = CutResolver = __decorate([
-    (0, graphql_1.Resolver)(() => cut_entity_1.Cut),
+    (0, graphql_1.Resolver)(() => cut_model_1.Cut),
     __metadata("design:paramtypes", [cut_service_1.CutService,
         film_service_1.FilmService])
 ], CutResolver);

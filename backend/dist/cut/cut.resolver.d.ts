@@ -1,7 +1,7 @@
 import { CutService } from './cut.service';
-import { Cut } from './entities/cut.entity';
-import { Film } from 'src/modules/film/entities/film.entity';
 import { FilmService } from 'src/modules/film/film.service';
+import { Cut } from 'src/@generated/cut/cut.model';
+import { Film } from 'src/@generated/film/film.model';
 export declare class CutResolver {
     private readonly cutService;
     private readonly filmService;

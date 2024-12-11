@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { Cut } from 'src/@generated/cut/cut.model';
 import ghibliData from 'src/data/ghibli';
-import { Cut } from './entities/cut.entity';
 
 @Injectable()
 export class CutService {

@@ -6,6 +6,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { FilmModule } from './modules/film/film.module';
 import { join } from 'path';
 import { CutModule } from './cut/cut.module';
+import { PrismaModule } from './prisma/prisma.module';
 @Module({
 	imports: [
 		GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -15,6 +16,7 @@ import { CutModule } from './cut/cut.module';
 		}),
 		FilmModule,
 		CutModule,
+		PrismaModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],

@@ -7,9 +7,10 @@ import {
 	Int,
 } from '@nestjs/graphql';
 import { FilmService } from './film.service';
-import { Film, PaginatedFilms } from './entities/film.entity';
-import { Director } from '../director/entities/director.entity';
 import { DirectorService } from '../director/director.service';
+import { Film } from 'src/@generated/film/film.model';
+import { PaginatedFilms } from './entities/PaginatedFilms';
+import { Director } from 'src/@generated/director/director.model';
 
 @Resolver(() => Film)
 export class FilmResolver {

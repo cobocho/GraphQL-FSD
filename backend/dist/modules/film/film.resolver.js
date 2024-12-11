@@ -15,9 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FilmResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const film_service_1 = require("./film.service");
-const film_entity_1 = require("./entities/film.entity");
-const director_entity_1 = require("../director/entities/director.entity");
 const director_service_1 = require("../director/director.service");
+const film_model_1 = require("../../@generated/film/film.model");
+const PaginatedFilms_1 = require("./entities/PaginatedFilms");
+const director_model_1 = require("../../@generated/director/director.model");
 let FilmResolver = class FilmResolver {
     constructor(filmService, directorService) {
         this.filmService = filmService;
@@ -35,7 +36,7 @@ let FilmResolver = class FilmResolver {
 };
 exports.FilmResolver = FilmResolver;
 __decorate([
-    (0, graphql_1.Query)(() => film_entity_1.PaginatedFilms),
+    (0, graphql_1.Query)(() => PaginatedFilms_1.PaginatedFilms),
     __param(0, (0, graphql_1.Args)('cursor', { type: () => graphql_1.Int, nullable: true, defaultValue: 1 })),
     __param(1, (0, graphql_1.Args)('limit', { type: () => graphql_1.Int, nullable: true, defaultValue: 6 })),
     __metadata("design:type", Function),
@@ -43,21 +44,21 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], FilmResolver.prototype, "films", null);
 __decorate([
-    (0, graphql_1.Query)(() => film_entity_1.Film),
+    (0, graphql_1.Query)(() => film_model_1.Film),
     __param(0, (0, graphql_1.Args)('id', { type: () => graphql_1.Int })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], FilmResolver.prototype, "film", null);
 __decorate([
-    (0, graphql_1.ResolveField)(() => director_entity_1.Director),
+    (0, graphql_1.ResolveField)(() => director_model_1.Director),
     __param(0, (0, graphql_1.Root)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [film_entity_1.Film]),
+    __metadata("design:paramtypes", [film_model_1.Film]),
     __metadata("design:returntype", void 0)
 ], FilmResolver.prototype, "director", null);
 exports.FilmResolver = FilmResolver = __decorate([
-    (0, graphql_1.Resolver)(() => film_entity_1.Film),
+    (0, graphql_1.Resolver)(() => film_model_1.Film),
     __metadata("design:paramtypes", [film_service_1.FilmService,
         director_service_1.DirectorService])
 ], FilmResolver);

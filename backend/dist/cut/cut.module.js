@@ -11,12 +11,13 @@ const common_1 = require("@nestjs/common");
 const cut_service_1 = require("./cut.service");
 const cut_resolver_1 = require("./cut.resolver");
 const film_service_1 = require("../modules/film/film.service");
+const prisma_service_1 = require("../prisma/prisma.service");
 let CutModule = class CutModule {
 };
 exports.CutModule = CutModule;
 exports.CutModule = CutModule = __decorate([
     (0, common_1.Module)({
-        providers: [cut_service_1.CutService, cut_resolver_1.CutResolver, film_service_1.FilmService],
+        providers: [cut_service_1.CutService, cut_resolver_1.CutResolver, film_service_1.FilmService, prisma_service_1.PrismaService],
     })
 ], CutModule);
 //# sourceMappingURL=cut.module.js.map

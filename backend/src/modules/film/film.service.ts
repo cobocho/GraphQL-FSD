@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import ghibliData from 'src/data/ghibli';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class FilmService {
-	getFilms(limit: number, cursor: number) {
+	constructor(private readonly prisma: PrismaService) {}
+
+	async getFilms(limit: number, cursor: number) {
 		const realLimit = Math.min(limit, 6);
 
 		if (!cursor) {
@@ -12,23 +15,14 @@ export class FilmService {
 			};
 		}
 
-		const cursorDataIndex = ghibliData.films.findIndex(
-			(film) => film.id === cursor,
-		);
+		console.log(cursor);
 
-		if (cursorDataIndex === -1) {
-			return {
-				films: [],
-			};
-		}
+		const result = await this.prisma.film.findMany();
 
-		const result = ghibliData.films.slice(
-			cursorDataIndex,
-			cursorDataIndex + realLimit,
-		);
+		console.log(result);
 
+		const hasNext = result.length === realLimit;
 		const nextCursor = result[result.length - 1]?.id;
-		const hasNext = nextCursor < ghibliData.films.length;
 
 		return {
 			films: result,

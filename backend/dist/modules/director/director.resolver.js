@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DirectorResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const director_service_1 = require("./director.service");
-const director_entity_1 = require("./entities/director.entity");
+const director_model_1 = require("../../@generated/director/director.model");
 let DirectorResolver = class DirectorResolver {
     constructor(directorService) {
         this.directorService = directorService;
@@ -20,7 +20,7 @@ let DirectorResolver = class DirectorResolver {
 };
 exports.DirectorResolver = DirectorResolver;
 exports.DirectorResolver = DirectorResolver = __decorate([
-    (0, graphql_1.Resolver)(() => director_entity_1.Director),
+    (0, graphql_1.Resolver)(() => director_model_1.Director),
     __metadata("design:paramtypes", [director_service_1.DirectorService])
 ], DirectorResolver);
 //# sourceMappingURL=director.resolver.js.map

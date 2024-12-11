@@ -15,6 +15,7 @@ const apollo_1 = require("@nestjs/apollo");
 const film_module_1 = require("./modules/film/film.module");
 const path_1 = require("path");
 const cut_module_1 = require("./cut/cut.module");
+const prisma_module_1 = require("./prisma/prisma.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,6 +29,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             film_module_1.FilmModule,
             cut_module_1.CutModule,
+            prisma_module_1.PrismaModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

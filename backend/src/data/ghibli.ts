@@ -1,6 +1,6 @@
 // import { Cut } from '../entities/Cut';
 
-import { Film } from 'src/modules/film/entities/film.entity';
+import { Film } from 'src/@generated/film/film.model';
 
 interface Cut {
 	id: number;
@@ -240,6 +240,7 @@ const ghibliData: GhibliData = {
 			title: '붉은 거북',
 			genre: '애니메이션,드라마,판타지,가족',
 			runningTime: 80,
+			subtitle: null,
 			description:
 				'한 남자가 거친 파도에 이끌려 조난을 당한다. 그가 눈을 뜬 곳은 거북이와 게, 새들만이 사는 무인 섬. 우선 생존을 위해 섬을 살피는 남자. 이윽고 섬을 떠나기 위해 온 힘을 다해 배를 만들기 시작한다. 하지만 바다에 배를 올리고 나면 붉은 거북이 한 마리 나타나 그를 방해하는데...',
 			director_id: 6,
@@ -251,6 +252,7 @@ const ghibliData: GhibliData = {
 			title: '온 유어 마크',
 			genre: '음악,애니메이션,SF',
 			runningTime: 7,
+			subtitle: null,
 			description:
 				'미야자키 하야오가 만든 단편 애니메이션. 일본 유명 록그룹의 동명곡을 바탕으로 뮤직 비디오로 만들었다. 배경이 불확실한 어느 미래. 사이비 종교 집회가 열리고 있는 건물에 경찰들이 들이닥치자 유혈 사태가 벌어진다. 두 명의 경찰은 그 집회에서 제물이 될 위기에 처한 날개 달린 소녀를 구해낸다. 그들은 그 소녀를 보호소로 안내한 후 술집에서 술잔을 기울이는데 자꾸만 이상한 기분이 든다. 결국, 그들은 자신들이 구해낸 소녀가 실험 대상이 될거란 사실을 알게 된 후 다시 그녀를 구출하기 위해 실험실에 침입하는데..',
 			release: '1995/07/15',

@@ -1,4 +1,4 @@
-import { Film } from 'src/modules/film/entities/film.entity';
+import { Film } from 'src/@generated/film/film.model';
 interface Cut {
     id: number;
     filmId: number;

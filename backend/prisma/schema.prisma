@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nestgraphql {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output = "../src/@generated"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Director {
+  id   Int    @id @default(autoincrement())
+  name String
+  films Film[]
+}
+
+model Film {
+  id          Int     @id @default(autoincrement())
+  title       String
+  subtitle    String?
+  genre       String
+  description String
+  runningTime Int
+  director_id Int
+  posterImg   String
+  release     String
+  director    Director @relation(fields: [director_id], references: [id])
+  Cut Cut[]
+}
+
+model Cut {
+  id   Int    @id @default(autoincrement())
+  src String
+  filmId Int
+  
+  film Film @relation(fields: [filmId], references: [id])
+}

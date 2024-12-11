@@ -5,27 +5,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FilmService = void 0;
 const common_1 = require("@nestjs/common");
 const ghibli_1 = require("../../data/ghibli");
+const prisma_service_1 = require("../../prisma/prisma.service");
 let FilmService = class FilmService {
-    getFilms(limit, cursor) {
+    constructor(prisma) {
+        this.prisma = prisma;
+    }
+    async getFilms(limit, cursor) {
         const realLimit = Math.min(limit, 6);
         if (!cursor) {
             return {
                 films: [],
             };
         }
-        const cursorDataIndex = ghibli_1.default.films.findIndex((film) => film.id === cursor);
-        if (cursorDataIndex === -1) {
-            return {
-                films: [],
-            };
-        }
-        const result = ghibli_1.default.films.slice(cursorDataIndex, cursorDataIndex + realLimit);
+        console.log(cursor);
+        const result = await this.prisma.film.findMany();
+        console.log(result);
+        const hasNext = result.length === realLimit;
         const nextCursor = result[result.length - 1]?.id;
-        const hasNext = nextCursor < ghibli_1.default.films.length;
         return {
             films: result,
             cursor: hasNext ? nextCursor + 1 : null,
@@ -37,6 +40,7 @@ let FilmService = class FilmService {
 };
 exports.FilmService = FilmService;
 exports.FilmService = FilmService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], FilmService);
 //# sourceMappingURL=film.service.js.map
