@@ -1,9 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import ghibliData from 'src/data/ghibli';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class DirectorService {
-	getDirector(id: number) {
-		return ghibliData.directors.find((director) => director.id === id);
+	constructor(private readonly prisma: PrismaService) {}
+
+	async getDirector(id: number) {
+		return await this.prisma.director.findUnique({
+			where: {
+				id,
+			},
+		});
 	}
 }

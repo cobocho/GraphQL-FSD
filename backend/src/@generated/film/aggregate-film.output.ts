@@ -8,18 +8,19 @@ import { FilmMaxAggregate } from './film-max-aggregate.output';
 
 @ObjectType()
 export class AggregateFilm {
-	@Field(() => FilmCountAggregate, { nullable: true })
-	_count?: FilmCountAggregate;
 
-	@Field(() => FilmAvgAggregate, { nullable: true })
-	_avg?: FilmAvgAggregate;
+    @Field(() => FilmCountAggregate, {nullable:true})
+    _count?: FilmCountAggregate;
 
-	@Field(() => FilmSumAggregate, { nullable: true })
-	_sum?: FilmSumAggregate;
+    @Field(() => FilmAvgAggregate, {nullable:true})
+    _avg?: FilmAvgAggregate;
 
-	@Field(() => FilmMinAggregate, { nullable: true })
-	_min?: FilmMinAggregate;
+    @Field(() => FilmSumAggregate, {nullable:true})
+    _sum?: FilmSumAggregate;
 
-	@Field(() => FilmMaxAggregate, { nullable: true })
-	_max?: FilmMaxAggregate;
+    @Field(() => FilmMinAggregate, {nullable:true})
+    _min?: FilmMinAggregate;
+
+    @Field(() => FilmMaxAggregate, {nullable:true})
+    _max?: FilmMaxAggregate;
 }
