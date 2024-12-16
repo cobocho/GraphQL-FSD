@@ -45,3 +45,17 @@ model Cut {
   
   film Film @relation(fields: [filmId], references: [id])
 }
+
+model User {
+  id   Int    @id @default(autoincrement())
+
+  username String
+
+  email String
+
+  password String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+}

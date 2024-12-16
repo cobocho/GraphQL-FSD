@@ -14,7 +14,6 @@ async function main() {
 	await prisma.film.createMany({
 		data: films,
 	});
-
 	await prisma.cut.createMany({
 		data: cuts,
 	});

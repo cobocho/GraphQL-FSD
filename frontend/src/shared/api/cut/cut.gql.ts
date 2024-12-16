@@ -1,4 +1,4 @@
-import { graphql } from '@shared/lib/gql';
+import { graphql } from '@shared/lib/codegen';
 
 export const GetCutsByFilmId = graphql(`
 	query cuts($filmId: Int!) {

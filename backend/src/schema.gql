@@ -3,52 +3,82 @@
 # ------------------------------------------------------
 
 type DirectorCount {
-  films: Int!
+	films: Int!
 }
 
 type Director {
-  id: ID!
-  name: String!
-  films: [Film!]
-  _count: DirectorCount!
+	id: ID!
+	name: String!
+	films: [Film!]
+	_count: DirectorCount!
 }
 
 type Cut {
-  id: ID!
-  src: String!
-  filmId: Int!
-  film: Film!
+	id: ID!
+	src: String!
+	filmId: Int!
+	film: Film!
 }
 
 type FilmCount {
-  Cut: Int!
+	Cut: Int!
 }
 
 type Film {
-  id: ID!
-  title: String!
-  subtitle: String
-  genre: String!
-  description: String!
-  runningTime: Int!
-  director_id: Int!
-  posterImg: String!
-  release: String!
-  director: Director!
-  Cut: [Cut!]
-  _count: FilmCount!
+	id: ID!
+	title: String!
+	subtitle: String
+	genre: String!
+	description: String!
+	runningTime: Int!
+	director_id: Int!
+	posterImg: String!
+	release: String!
+	director: Director!
+	Cut: [Cut!]
+	_count: FilmCount!
 }
 
 type PaginatedFilms {
-  """영화 목록"""
-  films: [Film!]!
+	"""
+	영화 목록
+	"""
+	films: [Film!]!
 
-  """다음 커서"""
-  cursor: Int
+	"""
+	다음 커서
+	"""
+	cursor: Int
 }
 
+type User {
+	id: ID!
+	username: String!
+	email: String!
+	password: String!
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
-  films(cursor: Int = 1, limit: Int = 6): PaginatedFilms!
-  film(id: Int!): Film!
-  cuts(filmId: Int!): [Cut!]!
+	films(cursor: Int = 1, limit: Int = 6): PaginatedFilms!
+	film(id: Int!): Film!
+	cuts(filmId: Int!): [Cut!]!
+}
+
+type Mutation {
+	signup(UserCreateInput: UserCreateInput!): User!
+}
+
+input UserCreateInput {
+	username: String!
+	email: String!
+	password: String!
+	createdAt: DateTime
+	updatedAt: DateTime
 }

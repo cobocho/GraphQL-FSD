@@ -1,5 +1,5 @@
 import { Heart } from 'lucide-react';
-import { Cut, Film } from '@shared/lib/gql';
+import { Cut, Film } from '@shared/lib/codegen';
 import { AspectRatio } from '@shared/ui/aspect-ratio';
 import { Button } from '@shared/ui/button';
 import {

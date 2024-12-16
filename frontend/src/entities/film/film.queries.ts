@@ -1,6 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
 import { filmService } from '@shared/api/film';
-import { Film } from '@shared/lib/gql';
 
 export class FilmQueries {
 	private static keys = {
@@ -14,7 +13,10 @@ export class FilmQueries {
 			queryFn: () => filmService.getFilms(cursor, limit),
 			select: (data) => ({
 				...data,
-				films: data.films.films.map((f) => this.formatFilm(f)),
+				films: data.films.films.map((f) => ({
+					...f,
+					genre: this.formatGenre(f.genre),
+				})),
 			}),
 		});
 	}
@@ -25,15 +27,15 @@ export class FilmQueries {
 			queryFn: () => filmService.getFilmById(id),
 			select: (data) => ({
 				...data,
-				film: this.formatFilm(data.film),
+				film: {
+					...data.film,
+					genre: this.formatGenre(data.film.genre),
+				},
 			}),
 		});
 	}
 
-	private static formatFilm(film: Omit<Film, 'director_id'>) {
-		return {
-			...film,
-			genre: film.genre.split(',').map((g) => g.trim()),
-		};
+	private static formatGenre(genre: string) {
+		return genre.split(',').map((g) => g.trim());
 	}
 }

@@ -1,4 +1,4 @@
-import { graphql } from '@shared/lib/gql';
+import { graphql } from '@shared/lib/codegen';
 
 export const GetFilms = graphql(`
 	query GetFilms($cursor: Int, $limit: Int) {

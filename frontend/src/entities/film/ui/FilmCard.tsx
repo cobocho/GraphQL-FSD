@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Film } from '@shared/lib/gql';
+import { Film } from '@shared/lib/codegen';
 
 interface FilmCardProps {
 	film: Omit<Film, 'director_id'>;
